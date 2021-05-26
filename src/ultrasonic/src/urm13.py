@@ -148,7 +148,7 @@ old_distance = 0
 start = time.time()
 while(1):
     
-    sensors[1].trigger_measurment()
+    sensors[1].trigger_measurement()
     distance = sensors[1].get_distance()
     if(distance != old_distance):
         stop = time.time()
