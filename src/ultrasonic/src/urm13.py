@@ -134,7 +134,7 @@ class urm13:
         """0x00-0x0A corresponds to sensitivity level 0 to 10. Set the ranging sensitivity in large measuring range(40-900cm). The smaller the value, the higher the sensitivity."""
         return self.get_register(12,12)
 if __name__ == "__main__":
-    addresses = [0x12,0x13,0x14]
+    addresses = [0x11,0x12,0x13]
     sensors = []
     for address in addresses:
         sensors.append(urm13(address))
@@ -152,12 +152,12 @@ if __name__ == "__main__":
     old_distance = 0
     start = time.time()
     while(1):
-        
-        sensors[1].trigger_measurement()
-        distance = sensors[1].get_distance()
-        if(distance != old_distance):
+        for i, sensor in enumerate(sensors):
+            sensor.trigger_measurement()
+            time.sleep(0.07)
+            distance = sensor.get_distance()
             stop = time.time()
-            print("[{}]: Distance: {}, Time Elapsed: {}".format(time.time(),distance,stop - start))
+            print("[Sensor {}]: Distance: {}, Time Elapsed: {}".format(i,distance,stop - start))
             old_distance = distance
             start = time.time()
 
