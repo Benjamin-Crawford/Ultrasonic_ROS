@@ -97,7 +97,10 @@ class urm13:
 
     def set_single_config(self,offset,mode):
         curr_config = self.get_full_config()[0]
+        print(curr_config)
+        print(self.get_full_config())
         curr_config_bin = list(("0000000" + bin(curr_config)[2:])[-8]) #pad the binary out to always be 8 chars
+        print(curr_config_bin)
         curr_config_bin[offset] = mode
         curr_config_bin = int("".join(list(curr_config_bin)),2)
         self.set_register(9,curr_config)
