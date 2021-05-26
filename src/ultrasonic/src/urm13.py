@@ -156,7 +156,7 @@ if __name__ == "__main__":
         for sensor in sensors:
             sensor.trigger_measurement()
         time.sleep(.07)
-        for i, sensor in sensors:
+        for i, sensor in enumerate(sensors):
             distance = sensor.get_distance()
             print("[Sensor {}]: Distance: {}".format(i,distance),end=" ")
         end = time.time()
