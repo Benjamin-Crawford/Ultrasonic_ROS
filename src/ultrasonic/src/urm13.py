@@ -153,10 +153,11 @@ if __name__ == "__main__":
     start = time.time()
     while(1):
         start = time.time()
-        for i, sensor in enumerate(sensors):
+        for sensor in sensors:
             sensor.trigger_measurement()
+        time.sleep(.07)
+        for i, sensor in sensors:
             distance = sensor.get_distance()
-
             print("[Sensor {}]: Distance: {}".format(i,distance),end=" ")
         end = time.time()
         print("Time Elapsed: {}".format(end - start))
