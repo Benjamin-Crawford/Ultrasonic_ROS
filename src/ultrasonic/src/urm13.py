@@ -73,7 +73,7 @@ class urm13:
             value = 65535
 
         self.temp_compensation = value
-        hex_temp_comp = ("000" + hex(value)[2:])[-4] #pad the hexidecimal out to always be four chars
+        hex_temp_comp = ("000" + hex(value)[2:])[-4:] #pad the hexidecimal out to always be four chars
         values_2_write = [int("0x" + hex_temp_comp[:2],16), int("0x" + hex_temp_comp[3:],16)]
         self.set_mult_registers([7,8],values_2_write)
  
@@ -97,13 +97,10 @@ class urm13:
 
     def set_single_config(self,offset,mode):
         curr_config = self.get_full_config()[0]
-        print(curr_config)
-        print(self.get_full_config())
-        curr_config_bin = list(("0000000" + bin(curr_config)[2:])[-8]) #pad the binary out to always be 8 chars
-        print(curr_config_bin)
-        curr_config_bin[offset] = mode
+        curr_config_bin = ("0000000" + bin(curr_config)[2:])[-8:] #pad the binary out to always be 8 chars
+        curr_config_bin[-offset - 1] = str(mode)
         curr_config_bin = int("".join(list(curr_config_bin)),2)
-        self.set_register(9,curr_config)
+        self.set_register(9,curr_config_bin)
 
     def config_range_mode(self,mode):
         """Set Ranging Mode: 0 for long range mode, 1 for short range mode"""
