@@ -141,7 +141,8 @@ addresses = [0x12,0x13]
 sensors = []
 for address in addresses:
     sensors.append(urm13(address))
-
+sensors[1].config_range_mode(0)
+sensors[1].config_detect_mode(1)
 # for sensor in sensors:
 #     sensor.config_detect_mode(0)
 old_distance = 0
