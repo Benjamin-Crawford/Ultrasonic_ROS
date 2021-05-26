@@ -145,14 +145,16 @@ for address in addresses:
 # for sensor in sensors:
 #     sensor.config_detect_mode(0)
 old_distance = 0
+start = time.time()
 while(1):
-    start = time.time()
+    
     sensors[1].trigger_measurment()
     distance = sensors[1].get_distance()
     if(distance != old_distance):
         stop = time.time()
-        print("Distance: {}, Time Elapsed: {}".format(distance,stop - start))
+        print("[{}]: Distance: {}, Time Elapsed: {}".format(time.time(),distance,stop - start))
         old_distance = distance
+        start = time.time()
 
 
 
