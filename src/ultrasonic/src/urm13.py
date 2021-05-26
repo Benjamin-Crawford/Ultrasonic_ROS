@@ -96,7 +96,7 @@ class urm13:
         return self.get_register(9,9)
 
     def set_single_config(self,offset,mode):
-        curr_config = self.get_full_config()
+        curr_config = self.get_full_config()[0]
         curr_config_bin = ("0000000" + bin(curr_config)[2:])[-8] #pad the binary out to always be 8 chars
         curr_config_bin[offset] = mode
         curr_config_bin = int("".join(list(curr_config_bin)),2)
@@ -140,6 +140,8 @@ for address in addresses:
     sensors.append(urm13(address))
 sensors[1].config_range_mode(0)
 sensors[1].config_detect_mode(1)
+print(sensors[1].get_full_config())
+time.sleep(5)
 # for sensor in sensors:
 #     sensor.config_detect_mode(0)
 old_distance = 0
