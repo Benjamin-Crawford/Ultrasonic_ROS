@@ -2,10 +2,6 @@ from smbus2 import SMBus
 import time
 import numpy as np
 
-def bin_array(num, m):
-    """Convert a positive integer num into an m-bit bit vector"""
-    return np.array(list(np.binary_repr(num).zfill(m))) #TODO: FIX THIS ITS BROKEN
-
 class urm13:
     def __init__(self, cur_address):
         self.bus = SMBus(1)
@@ -100,9 +96,10 @@ class urm13:
         return self.get_register(9,9)
 
     def set_single_config(self,offset,mode):
-        curr_config = bin_array(self.get_full_config(),8)
-        curr_config[offset] = mode
-        curr_config = int("".join(list(curr_config)),2)
+        curr_config = self.get_full_config()
+        curr_config_bin = ("0000000" + bin(curr_config)[2:])[-8] #pad the binary out to always be 8 chars
+        curr_config_bin[offset] = mode
+        curr_config_bin = int("".join(list(curr_config_bin)),2)
         self.set_register(9,curr_config)
 
     def config_range_mode(self,mode):
