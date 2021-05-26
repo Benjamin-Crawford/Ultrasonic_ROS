@@ -156,10 +156,11 @@ if __name__ == "__main__":
             sensor.trigger_measurement()
             time.sleep(0.07)
             distance = sensor.get_distance()
-            stop = time.time()
-            print("[Sensor {}]: Distance: {}, Time Elapsed: {}".format(i,distance,stop - start))
-            old_distance = distance
-            start = time.time()
+
+            print("[Sensor {}]: Distance: {}".format(i,distance),end=" ")
+        print("\n")
+ 
+
 
 
 
