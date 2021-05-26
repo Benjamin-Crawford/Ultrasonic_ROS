@@ -31,8 +31,8 @@ class urm13:
 
     def set_address(self,address):
         """set i2c commmunication address"""
-        self.address = address
         self.set_register(0,address)
+        self.address = address
 
     def get_address(self):
         return self.address
