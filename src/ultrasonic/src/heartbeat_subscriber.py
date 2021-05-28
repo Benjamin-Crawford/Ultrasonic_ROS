@@ -4,7 +4,7 @@ import time
 from std_msgs.msg import Float32
 
 def callback(data):     
-    time_elapsed = time.time() - data
+    time_elapsed = time.time() - data.data
     if time_elapsed > 1:
         print("[ERROR]: Ultrasonic Heartbeat is not detected! Something is wrong!") #TODO: add better functionality should prob throw some type of error.
 
