@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from smbus2 import SMBus
 import time
 import numpy as np
