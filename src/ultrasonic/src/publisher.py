@@ -22,7 +22,7 @@ def publisher():
 
     while not rospy.is_shutdown():
         for i in range(NUM_GROUPS):
-            distances = []
+            distances = [i] #first item in distances array is the group number
             for sensor in sensors[i]:
                 sensor.trigger_measurement()
             time.sleep(WAIT_TIME)
