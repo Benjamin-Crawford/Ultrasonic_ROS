@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from ultrasonic.src.config import NUM_GROUPS, URM13_ADDRESSES
+import config
 from urm13 import urm13
 import config
 import rospy
@@ -13,19 +13,19 @@ def publisher():
     data_pubs = []
     sensors = []
 
-    for i in range(NUM_GROUPS):
+    for i in range(config.NUM_GROUPS):
         sensors.append([])
         data_pubs.append(rospy.Publisher('ultrasonic_data_group_{}'.format(i), Float64MultiArray, queue_size=10))
         rospy.init_node('data_publisher_group_{}'.format(i), anonymous=True)
-        for j in GROUP_MEMBERS[i]:
-            sensors[i].append(urm13(URM13_ADDRESSES[j]))
+        for j in config.GROUP_MEMBERS[i]:
+            sensors[i].append(urm13(config.URM13_ADDRESSES[j]))
 
     while not rospy.is_shutdown():
-        for i in range(NUM_GROUPS):
+        for i in range(config.NUM_GROUPS):
             distances = [i] #first item in distances array is the group number
             for sensor in sensors[i]:
                 sensor.trigger_measurement()
-            time.sleep(WAIT_TIME)
+            time.sleep(config.WAIT_TIME)
             for sensor in sensors[i]:
                 distances.append(sensor.get_distance())
             rospy.loginfo(distances)
