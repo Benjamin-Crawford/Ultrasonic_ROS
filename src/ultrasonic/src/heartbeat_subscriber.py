@@ -6,7 +6,8 @@ from std_msgs.msg import Float32
 def callback(data):     
     time_elapsed = time.time() - data.data
     if time_elapsed > 10:
-        print("[ERROR]: Ultrasonic Heartbeat is not detected! Something is wrong!") #TODO: add better functionality should prob throw some type of error.
+        pass
+        # print("[ERROR]: Ultrasonic Heartbeat is not detected! Something is wrong!") #TODO: add better functionality should prob throw some type of error.
 
 def listener(): 
     rospy.init_node('ultrasonic_stethoscope', anonymous=True)
