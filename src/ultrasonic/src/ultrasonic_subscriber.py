@@ -5,7 +5,7 @@ import config
 
 def callback(data):     
     group_num = data.data[0]
-    print("Group Number {}: ".format(int(group_num)),end="" )
+    print("Group {}: ".format(int(group_num)),end="" )
     for i, distance in enumerate(data.data[1:]):
         print("{}: {}, ".format(int(i),distance),end="")
     print("")
