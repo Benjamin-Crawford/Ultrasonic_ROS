@@ -3,11 +3,11 @@ import config
 from urm13 import urm13
 import config
 import rospy
-from std_msgs.msg import Float64MultiArray, Float32
+from std_msgs.msg import Float64MultiArray, Float64
 import time
 
 def publisher():
-    heart_pub = rospy.Publisher('ultrasonic_heartbeat', Float32, queue_size=10)
+    heart_pub = rospy.Publisher('ultrasonic_heartbeat', Float64, queue_size=10)
 
     data_pubs = []
     sensors = []
