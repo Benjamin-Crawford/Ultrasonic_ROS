@@ -12,7 +12,9 @@ if __name__ == "__main__":
 
     sensor = urm13(int(CURRENT_ADDRESS))
     sensor.set_address(int(NEW_ADDRESS))
-
+    print("Please cycle power of sensor to allow changes to take effect.")
+    input("Press any key when you have cycled power.")
+    
     print('Now printing all registers: ' + sensor.get_all_registers)
 
     print('Now printing 1 distance measure: ' + sensor.get_distance)
