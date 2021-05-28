@@ -3,11 +3,11 @@ import config
 from urm13 import urm13
 import config
 import rospy
-from std_msgs.msg import Float64MultiArray, Time
+from std_msgs.msg import Float64MultiArray, Float32
 import time
 
 def publisher():
-    heart_pub = rospy.Publisher('ultrasonic_heartbeat', Time, queue_size=10)
+    heart_pub = rospy.Publisher('ultrasonic_heartbeat', Float32, queue_size=10)
 
     data_pubs = []
     sensors = []
@@ -33,7 +33,7 @@ def publisher():
             data_to_send.data = distances
             data_pubs[i].publish(data_to_send)
 
-        heart_pub.publish(rospy.get_rostime())
+        heart_pub.publish(time.time())
         rate.sleep()
 
 if __name__ == '__main__':

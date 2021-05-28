@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import Time
+import time
+from std_msgs.msg import Float32
 
 def callback(data):     
-    time_elapsed = rospy.get_rostime().to_sec() - data.to_sec()
+    time_elapsed = time.time() - data
     if time_elapsed > 1:
         print("[ERROR]: Ultrasonic Heartbeat is not detected! Something is wrong!") #TODO: add better functionality should prob throw some type of error.
 
 def listener(): 
     rospy.init_node('ultrasonic_stethoscope', anonymous=True)
 
-    rospy.Subscriber("ultrasonic_heartbeat", Time, callback)
+    rospy.Subscriber("ultrasonic_heartbeat", Float32, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
