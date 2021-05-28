@@ -19,7 +19,7 @@ def publisher():
         for j in config.GROUP_MEMBERS[i]:
             sensors[i].append(urm13(config.URM13_ADDRESSES[j]))
 
-    rate = rospy.Rate(14) # 14hz
+    rate = rospy.Rate(10) # 14hz
     while not rospy.is_shutdown():
         for i in range(config.NUM_GROUPS):
             data_to_send = Float64MultiArray()
