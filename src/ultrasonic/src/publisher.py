@@ -22,6 +22,7 @@ def publisher():
     rate = rospy.Rate(14) # 14hz
     while not rospy.is_shutdown():
         for i in range(config.NUM_GROUPS):
+            data_to_send = Float64MultiArray()
             distances = [i] #first item in distances array is the group number
             for sensor in sensors[i]:
                 sensor.trigger_measurement()
@@ -29,7 +30,8 @@ def publisher():
             for sensor in sensors[i]:
                 distances.append(sensor.get_distance())
             rospy.loginfo(distances)
-            data_pubs[i].publish(distances)
+            data_to_send.data = distances
+            data_pubs[i].publish(data_to_send)
 
         heart_pub.publish(rospy.get_rostime())
         rate.sleep()
