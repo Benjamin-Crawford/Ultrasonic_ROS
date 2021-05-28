@@ -1,7 +1,7 @@
 <launch>
-<node pkg="ultrasonic" type="publisher.py" name="data_publisher" output="screen"></node>
+<node pkg="ultrasonic" type="src/publisher.py" name="data_publisher" output="screen"></node>
 
-<node pkg="ultrasonic" type="ultrasonic_subscriber.py" name="data_subscriber" output="screen"></node>
+<node pkg="ultrasonic" type="src/ultrasonic_subscriber.py" name="data_subscriber" output="screen"></node>
 
-<node pkg="ultrasonic" type="heartbeat_subscriber.py" name="ultrasonic_stethoscope" output="screen"></node>
+<node pkg="ultrasonic" type="src/heartbeat_subscriber.py" name="ultrasonic_stethoscope" output="screen"></node>
 </launch>
