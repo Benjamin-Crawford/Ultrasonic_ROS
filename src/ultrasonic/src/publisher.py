@@ -29,7 +29,7 @@ def publisher():
             time.sleep(config.WAIT_TIME)
             for sensor in sensors[i]:
                 distances.append(sensor.get_distance())
-            rospy.loginfo(distances)
+            # rospy.loginfo(distances)
             data_to_send.data = distances
             data_pubs[i].publish(data_to_send)
 
