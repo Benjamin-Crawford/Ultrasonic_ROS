@@ -4,8 +4,8 @@ from std_msgs.msg import Float64MultiArray
 import config
 
 def callback(data):     
-    group_num = data[0]
-    for i, distance in enumerate(data):
+    group_num = data.data[0]
+    for i, distance in enumerate(data.data):
         print("Group Number {}: {}: {}, ".format(group_num,i,distance),end=" ")
     print("")
 

@@ -3,7 +3,7 @@ import rospy
 from std_msgs.msg import Time
 
 def callback(data):     
-    time_elapsed = rospy.get_rostime() - data
+    time_elapsed = rospy.get_rostime().to_sec() - data.to_sec()
     if time_elapsed > 1:
         print("[ERROR]: Ultrasonic Heartbeat is not detected! Something is wrong!") #TODO: add better functionality should prob throw some type of error.
 
