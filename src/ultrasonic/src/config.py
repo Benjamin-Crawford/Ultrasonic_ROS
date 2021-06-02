@@ -7,4 +7,4 @@ NUM_GROUPS = 2 #defines the number of firing groups to alleviate crosstalk issue
 WAIT_TIME = 0.07 #time to wait between trigger and read
 
 #indexes of the sensors in each group leave empty if not using that group
-GROUP_MEMBERS = [[0,2][1,3]] 
+GROUP_MEMBERS = [[0,2],[1,3]] 
