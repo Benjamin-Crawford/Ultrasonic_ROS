@@ -5,15 +5,11 @@ import config
 
 def callback(data):     
     group_num = data.data[0]
-    if(group_num == 1.0):
-        group_name = "Front"
-    else:
-        group_name = "Back"
-    print("{} Group: ".format(group_name),end=" ")
+    print("Group: {}".format(int(group_num)),end=" ")
     for i, distance in enumerate(data.data[1:]):
         if distance < 300:
-            print("{}: {}   ".format(int(i),distance),end=" ")
-    print("")
+            print("{}: {}   |".format(int(i),distance),end=" ")
+    print("\n")
 
 def listener(): 
     data_subs = []
