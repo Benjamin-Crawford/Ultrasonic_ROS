@@ -11,11 +11,11 @@ def publisher():
 
     data_pubs = []
     sensors = []
+    rospy.init_node('data_publisher', anonymous=True)
 
     for i in range(config.NUM_GROUPS):
         sensors.append([])
         data_pubs.append(rospy.Publisher('ultrasonic_data_group_{}'.format(i), Float64MultiArray, queue_size=10))
-        rospy.init_node('data_publisher_group_{}'.format(i), anonymous=True)
         for j in config.GROUP_MEMBERS[i]:
             sensors[i].append(urm13(config.URM13_ADDRESSES[j]))
 
