@@ -32,7 +32,6 @@ def publisher():
             # rospy.loginfo(distances)
             data_to_send.data = distances
             data_pubs[i].publish(data_to_send)
-        print(time.time())
         heart_pub.publish(time.time())
         rate.sleep()
 

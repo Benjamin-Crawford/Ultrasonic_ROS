@@ -9,10 +9,10 @@ def callback(data):
         group_name = "Front"
     else:
         group_name = "Back"
-    print("{} Group: ".format(group_name,end=""))
+    print("{} Group: ".format(group_name,end=" "))
     for i, distance in enumerate(data.data[1:]):
         if distance < 300:
-            print("{}: {}   ".format(int(i),distance),end="")
+            print("{}: {}   ".format(int(i),distance),end=" ")
     print("")
 
 def listener(): 
